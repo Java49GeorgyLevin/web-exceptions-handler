@@ -20,4 +20,11 @@ ResponseEntity<String> notFound(NotFoundException e) {
 	String message = e.getMessage();
 	return new ResponseEntity<String>(message, HttpStatus.NOT_FOUND);	
 }
+
+@ExceptionHandler({ArgumentNotValidException.class})
+ResponseEntity<String> notValid(ArgumentNotValidException e) {	
+	String message = "hello, world!";
+//	String message = e.getAllErrors().toString() ;
+	return new ResponseEntity<String>(message, HttpStatus.BAD_REQUEST);
+}
 }
